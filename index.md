@@ -1,9 +1,5 @@
 ![header icon](/assets/header-dark-background.jpg)
 
-# Documentation
-
-## Core Idea and Use Cases
-
 The core idea of the ordered.online application is to substitute redundant work of waiters in bars/restaurants/cafes ("locations") and to offer a live interactive interface for incoming orders. Furthermore:
 - It should be possible for location owners to register an account and their locations with relevant information.
 - Users should be able to find locations, at least based on their location or based on the name of the location.
@@ -24,6 +20,8 @@ We assessed these trust problems and came to the following solutions:
 - We plan to exclude any payment process from our application at first.
 
 ## Project Architecture
+
+![architecture](/assets/project-architecture.png)
 
 Because the application will offer both web user interfaces and native mobile application(s), it is of great importance, that the biggest part of this application is interoperable.
 We present an architecture, which is devided into two parts:
