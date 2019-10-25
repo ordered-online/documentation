@@ -1,4 +1,6 @@
-# ordered.online Documentation
+![header icon](/assets/header-dark-background.jpg)
+
+# Documentation
 
 ## Core Idea and Use Cases
 
