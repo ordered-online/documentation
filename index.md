@@ -35,7 +35,7 @@ We present an architecture, which is devided into two parts:
 To cover our use cases, we assessed the following service architecture:
 - [`codes`](codes.md) is our microservice to generate unique, discardable codes, which can also be rendered to a qr code representation.
 - [`verification`](verification.md) is our authentication microservice, which handles registration, login, session key based verification and logout.
-- [`menus`](menus.md) is our microservice to create, fetch and edit location based menus.
+- [`products`](products.md) is our microservice to create, fetch and edit location based products.
 - [`locations`](locations.md) is our microservice to create, fetch and edit locations, i.e. bars, restaurants or cafes.
 - [`orders`](orders.md) is our microservice to place and fetch orders.
 
