@@ -9,7 +9,6 @@ This hybrid mobile and web app provides a shared interface to use the `ordered.o
 - [React Native for Web](https://github.com/necolas/react-native-web)
 - [Redux](https://github.com/reduxjs/redux)
 - [Babel](https://github.com/babel/babel)
-- [Webpack](https://github.com/webpack/webpack)
 
 ## Development Add-ons
 
@@ -17,7 +16,6 @@ During development we like to make use of a Linter and a Formatter to enforce a 
 
 - [Eslint](https://github.com/eslint/eslint/)
 - [Prettier](https://github.com/prettier/prettier)
-- [Webpack Dev Server](https://github.com/webpack/webpack-dev-server)
 - [Expo](https://github.com/expo/expo)
 
 ## Quickstart
@@ -45,11 +43,7 @@ If for some reasons, there are vulnerabilities that were found, you can run `$ y
    - Android : `$ yarn run android` OR `$ npm run android`
    - iOS : `$ yarn run ios` OR `$ npm run ios`
 
-4. If you wish to test the app natively on your phone, install the [Expo Client](https://expo.io/tools) on your device. You can get it from the following links
-
-[<img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-preferred.png">](https://apps.apple.com/us/app/expo-client/id982107779)
-
-[<img src="https://lh3.googleusercontent.com/qF9r3ZjtgG-qyHdmjecArtKiulz1gmwL_xl9R3_fzk6igSeoN0wYbJSKEX5d_fxJRwYZJpHbqcLB3i9atl-9dOfUl9an7U43TfZ9PtQ=s0">](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en)
+4. If you wish to test the app natively on your phone, install the [Expo Client](https://expo.io/tools) on your device. You can get it from the following links for [iOS](https://apps.apple.com/us/app/expo-client/id982107779) and [Android](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en)
 
 Then connect your phone to the same wireless network as your computer. On Android, use the Expo app to scan the QR code from your terminal to open your project. On iOS, follow on-screen instructions to get a link.
 
