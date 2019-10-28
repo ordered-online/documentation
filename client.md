@@ -9,14 +9,8 @@ This hybrid mobile and web app provides a shared interface to use the `ordered.o
 - [React Native for Web](https://github.com/necolas/react-native-web)
 - [Redux](https://github.com/reduxjs/redux)
 - [Babel](https://github.com/babel/babel)
-
-## Development Add-ons
-
-During development we like to make use of a Linter and a Formatter to enforce a specific code style and formatting. This will help with readability and thus improve collaboration. Additionally Hot-Module-Replacement is an important component of our development setup to speed up coding during development. For these purposes we use the following packages:
-
-- [Eslint](https://github.com/eslint/eslint/)
-- [Prettier](https://github.com/prettier/prettier)
 - [Expo](https://github.com/expo/expo)
+- [Prettier](https://github.com/prettier/prettier)
 
 ## Quickstart
 
@@ -53,9 +47,9 @@ Then connect your phone to the same wireless network as your computer. On Androi
 
 Run the app in development mode with hot module replacement via Webpack Dev Server
 
-Simply run `$ yarn run web` OR `$ npm run web`
+Simply run `$ yarn run web` OR `$ npm run web` to run Expo for Web. This will open Expo in your browser and redirect you to the web application.
 
-Then open your browser at `localhost:3000`.
+Alternatively you can run `$ yarn run scripts:start` OR `$ npm run scripts:start` to start the dev server from react scripts and open your browser at `localhost:3000`.
 
 ### Android
 
