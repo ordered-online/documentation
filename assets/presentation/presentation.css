@@ -1,0 +1,55 @@
+
+
+.background-gradient {
+  background: rgba(45,204,114,1);
+  background: -moz-linear-gradient(45deg, rgba(45,204,114,1) 0%, rgba(38,173,94,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(45,204,114,1)), color-stop(100%, rgba(38,173,94,1)));
+  background: -webkit-linear-gradient(45deg, rgba(45,204,114,1) 0%, rgba(38,173,94,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(45,204,114,1) 0%, rgba(38,173,94,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(45,204,114,1) 0%, rgba(38,173,94,1) 100%);
+  background: linear-gradient(45deg, rgba(45,204,114,1) 0%, rgba(38,173,94,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2dcc72', endColorstr='#26ad5e', GradientType=1 );
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+section {
+  min-height: 100vh;
+  position: relative;
+}
+
+.rounded {
+  border-radius: 2rem !important;
+}
+
+.round {
+  border-radius: 100% !important;
+}
+
+.profile-icon {
+  max-height: 12rem;
+  max-width: 12rem;
+}
+
+.bg-dark {
+  background: #131313 !important;
+}
+
+.center-in-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.think-bubble {
+  width: 3rem;
+  height: 3rem;
+}
+
+.drop-shadow {
+  -webkit-filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.3));
+}
