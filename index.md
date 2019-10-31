@@ -33,17 +33,25 @@ We present an architecture, which is devided into two parts:
 #### Architecture
 
 To cover our use cases, we assessed the following service architecture:
-- [`codes`](codes.md) is our microservice to generate unique, discardable codes, which can also be rendered to a qr code representation.
-- [`verification`](verification.md) is our authentication microservice, which handles registration, login, session key based verification and logout.
-- [`products`](products.md) is our microservice to create, fetch and edit location based products.
-- [`locations`](locations.md) is our microservice to create, fetch and edit locations, i.e. bars, restaurants or cafes.
-- [`orders`](orders.md) is our microservice to place and fetch orders.
-
-#### Containerization and Deployment Concepts
-
-`TODO`
+- [`codes` (click here for its documentation)](codes.md) is our microservice to generate unique, discardable codes, which can also be rendered to a qr code representation.
+- [`verification` (click here for its documentation)](verification.md) is our authentication microservice, which handles registration, login, session key based verification and logout.
+- [`products` (click here for its documentation)](products.md) is our microservice to create, fetch and edit location based products.
+- [`locations` (click here for its documentation)](locations.md) is our microservice to create, fetch and edit locations, i.e. bars, restaurants or cafes.
+- [`orders` (click here for its documentation)](orders.md) is our microservice to place and fetch orders.
 
 ### Web/Native Frontend Application Layer
 
-`TODO`
+[`client` (click here for its documentation)](client.md) is our frontend layer and consists of a multi-platform, react native based application.
 
+
+## Continous Integration
+
+As a continuous integration service we use [Travis](https://travis-ci.org/). 
+We use Travis as an automated service to build our developer documentation. On commit, travis pushes README changes of microservices to our documentation repository.
+
+
+## Containerization and Deployment Concepts
+
+Because of our microservice based architecture, it is hard during deployment to interweave all services correctly, since some services depend on other services (e.g., verification) etc. We solve this issue by stringent containerization with [Docker](https://docs.docker.com/). 
+Each microservice is packed into an own Docker container and interlinked with [Docker networks](https://docs.docker.com/network/). Each microservice obtains its own url scheme. To avoid connections via arbitrary port numbers, we use the built-in url resolving of Docker.
+As a high performance load balancer and webserver we use [NGINX](https://www.nginx.com/). NGINX accesses our containerized microservices via their Docker provided url schemes and combines all together to an accessible REST API. Note that the NGINX service itself is again containerized by Docker, which makes it possible to build the complete infrastructure out of the box with Docker.
