@@ -51,34 +51,75 @@
                         background-repeat: repeat-x; background-color: #000;">
         </section>
         <section>
-            <div class="center-in-container">
-                <div class="text-left bg-light p-4 mb-3 rounded text-dark shadow-lg">
-                    <h1><b>Trust Problems</b></h1>
-                </div>
+            <div class="center-in-container text-center">
+                <h1 class="mb-5">Use Cases</h1>
                 <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
-                    <ul>
-                        <li>How can the location representative confirm, that an order was placed by the one sitting at the table?</li>
-                        <li>How can a user confirm, that he orders at the right location?</li>
-                        <li>How can the location representative confirm, that the user paid?</li>
-                    </ul>
+                    <img alt="structure" src="assets/use-cases.png">
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container">
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Challenges</b></h1>
                     <hr>
-                    <h4 class="text-center">Solution</h4>
-                    <hr>
                     <ul>
-                        <li>The location representative generates a code, which can be scanned by the user.</li>
-                        <li>By scanning, the user obtains a key and by that access to the order management.</li>
-                        <li>Payments will not be supported at first and must be done be the existing payment system.</li>
+                        <li>
+                            How to handle interrupted connections during ordering?
+                            <br>
+                            <code>Solution: store actions server side and cache, where possible.</code>
+                        </li>
+                        <li>
+                            How to balance feature quantity and energy consumption?
+                            <br>
+                            <code>Solution: identify power intensive tasks through profiling and mitigate usage of these.</code>
+                        </li>
+                        <li>
+                            How do we ensure optimal usability?
+                            <br>
+                            <code>Solution: recruit test users and evaluate peer feedback.</code>
+                        </li>
+                        <li>
+                            How do we reduce development effort and ensure quality?
+                            <br>
+                            <code>
+                                Solutions: Develop interoperably in the frontend with React Native.
+                                Build on the base of micro services to choose a suitable technology for each functionality.
+                                Use Docker to reduce deployment efforts. Use continuous integration to perform
+                                automatable tasks (e.g. building the documentation).
+                            </code>
+                        </li>
                     </ul>
                 </div>
                 <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
             </div>
         </section>
         <section>
-            <div class="center-in-container text-center">
-                <h1 class="mb-5">Use Cases</h1>
+            <div class="center-in-container">
                 <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
-                    <img alt="structure" src="assets/use-cases.png">
+                    <h1><b>Briefly: use case specific challenges</b></h1>
+                    <hr>
+                    <ul>
+                        <li>How can the location representative confirm, that an order was placed by the one sitting at the table?</li>
+                        <li>How can a user confirm, that he orders at the right location?</li>
+                        <li>How can the location representative confirm, that the user paid?</li>
+                    </ul>
                 </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container">
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Adaption in our app</b></h1>
+                    <hr>
+                    <ul>
+                        <li>Allow autonomous changes of the location representative's order panel through WebSocket channels.</li>
+                        <li>Handle the scan of the location representative's QR code appropriately, i.e. allow product ordering.</li>
+                        <li>Allow the location representative to close the order session and handle this in the client.</li>
+                    </ul>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
             </div>
         </section>
         <section>
@@ -109,6 +150,42 @@
                 </div>
                 <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
 
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container">
+                <div class="text-left bg-light p-4 mb-3 rounded text-dark shadow-lg">
+                    <h1><b>Time schedule</b></h1>
+                </div>
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <table>
+                      <tr>
+                        <th>Date span</th>
+                        <th>Event</th>
+                      </tr>
+                      <tr>
+                        <td>Nov 1 2019 to Nov 15 2019</td>
+                        <td>Finish backend, build prototype with base functionalities</td>
+                      </tr>
+                      <tr>
+                        <td>Nov 15 2019 to Dec 6 2019</td>
+                        <td>Implement all functionalities in the prototype, deploy web app</td>
+                      </tr>
+                      <tr>
+                        <td>Dec 6 2019 to Dec 11 2019</td>
+                        <td>Prepare prototype for peer review, i.e. submit App to Testflight (iOS) and create a test track (Android)</td>
+                      </tr>
+                      <tr>
+                        <td>Dec 11 2019 to Jan 24 2019</td>
+                        <td>Reiterate and improve app based on peer feedback, implement additional features, make it production ready. Increase scalability.</td>
+                      </tr>
+                      <tr>
+                        <td>Jan 24 2019 to Jan 31 2019</td>
+                        <td>Go into production, i.e. publish to App Store and Play Store</td>
+                      </tr>
+                    </table>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
             </div>
         </section>
     </div>
