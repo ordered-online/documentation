@@ -2,6 +2,8 @@
 
 The core idea of the ordered.online application is to order online at restaurants, bars, cafés and more.
 
+See our [kickoff presentation](/kickoff.html) as well for more visual impressions.
+
 ## Use Cases
 ![use case diagram](/assets/use-cases.png)
 
