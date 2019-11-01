@@ -1,11 +1,9 @@
 ![header icon](/assets/header-dark-background.jpg)
 
-The core idea of the ordered.online application is to substitute redundant work of waiters in bars/restaurants/cafes ("locations") and to offer a live interactive interface for incoming orders. Furthermore:
-- It should be possible for location owners to register an account and their locations with relevant information.
-- Users should be able to find locations, at least based on their location or based on the name of the location.
-- Orders should be made available without login.
-- Orders should be streamed directly to a UI of the location owner.
-- The app should handle user/order verification swiftly, so users are not bothered by it.
+The core idea of the ordered.online application is to order online at restaurants, bars, cafés and more.
+
+## Use Cases
+![use case diagram](/assets/use-cases.png)
 
 ## Trust Problems
 

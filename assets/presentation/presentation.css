@@ -48,8 +48,3 @@ section {
   width: 3rem;
   height: 3rem;
 }
-
-.drop-shadow {
-  -webkit-filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.3));
-  filter: drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.3));
-}
