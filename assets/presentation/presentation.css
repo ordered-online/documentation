@@ -22,7 +22,8 @@ section {
 
   min-width: 100%;
 
-  display: table;
+  display: flex;
+  align-items: center;
 
   position: relative;
 }
@@ -45,14 +46,20 @@ section {
 }
 
 .center-in-container {
-  padding-left: 6rem;
-  padding-right: 6rem;
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
+  display: block;
+  margin: 0 auto;
 }
 
 .think-bubble {
   width: 3rem;
   height: 3rem;
 }
+
+.powered-by{
+  width: 75vw;
+}
+
+.powered-by img{
+  height: 175px;
+}
+
