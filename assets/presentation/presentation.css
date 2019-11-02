@@ -13,10 +13,17 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+
+  font-size: 16pt;
 }
 
 section {
   min-height: 100vh;
+
+  min-width: 100%;
+
+  display: table;
+
   position: relative;
 }
 
@@ -38,10 +45,11 @@ section {
 }
 
 .center-in-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding-left: 6rem;
+  padding-right: 6rem;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .think-bubble {
