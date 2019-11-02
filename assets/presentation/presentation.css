@@ -59,9 +59,10 @@ section {
 }
 
 .powered-by{
-  width: 75vw;
+  width: 90vw;
+  max-width: 1444px;
 }
 
 .powered-by img{
-  height: 175px;
+  width: 100%;
 }
