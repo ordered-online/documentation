@@ -48,11 +48,14 @@ section {
 .center-in-container {
   display: block;
   margin: 0 auto;
+  padding: 0 2rem;
+  height: auto;
 }
 
 .think-bubble {
   width: 3rem;
   height: 3rem;
+  margin: 0 -2rem;
 }
 
 .powered-by{
