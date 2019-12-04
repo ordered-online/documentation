@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kickoff slides</title>
+    <link rel="stylesheet" type="text/css" href="assets/presentation/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/presentation/presentation.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+<body class="bg-dark text-white">
+    <div id="background" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: -1;"></div>
+    <div style="position: fixed; bottom: 0; right: 0; z-index: 1337;">
+        <div class="m-3">
+            <img alt="logo" height="60" width="60" src="assets/presentation/icon_transparent_white.png">
+        </div>
+    </div>
+    <div id="presentation-container">
+        <section>
+            <div class="row p-4 text-center center-in-container">
+                <div class="col-sm">
+                    <img class="round shadow-lg profile-icon" alt="Philipp" src="https://avatars3.githubusercontent.com/u/27271818?s=460&v=4">
+                    <div class="mt-5">
+                        <h4><i>Philipp Matthes</i></h4>
+                        <a class="text-light" href="https://philippmatth.es/"><p>https://philippmatth.es/</p></a>
+                        <a class="text-light" href="mailto:philipp.matthes@tu-dresden.de"><p>philipp.matthes@tu-dresden.de</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-4 text-center center-in-container">
+                <div class="col-sm">
+                    <img class="round shadow-lg profile-icon" alt="Philipp" src="https://avatars2.githubusercontent.com/u/23213965?s=460&v=4">
+                    <div class="mt-5">
+                        <h4><i>Felix Kästner</i></h4>
+                        <a class="text-light" target="_blank" href="https://felix-kaestner.com/"><p>https://www.felix-kaestner.com/</p></a>
+                        <a class="text-light" target="_blank" href="mailto:felix.kaestner@mailbox.tu-dresden.de"><p>felix.kaestner@mailbox.tu-dresden.de</p></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container">
+                <div class="text-center bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Hier ist die Idee.</b></h1>
+                </div>
+                <div class="text-center bg-light p-4 rounded text-dark mt-4 shadow-lg">
+                    <h2>Du besuchst ein Restaurant und bestellst einfach online.</h2>
+                    <h2>Dafür wollen wir eine App.</h2>
+                </div>
+                <div class="text-center bg-light p-4 rounded text-dark mt-4 shadow-lg">
+                    <h1>Sie heißt <i><b>ordered.online</b></i></h1>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+
+            </div>
+        </section>
+        <section style="background-image: url('assets/presentation/mockup.jpg');
+                        background-size: contain; background-position: center;
+                        background-repeat: repeat-x; background-color: #000;">
+        </section>
+        <section>
+            <div class="center-in-container text-center">
+                <div class="text-center bg-light p-4 rounded text-dark shadow-lg">
+                    <h1 class="mb-5">Use Cases</h1>
+                    <img alt="structure" src="assets/use-cases.png">
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container">
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Trust-Probleme</b></h1>
+                    <ul class="pt-1">
+                        <li>Wie kann ein Betreiber feststellen, dass eine Bestellung auch wirklich von demjenigen kommt, der am Tisch sitzt?</li>
+                        <li>Wie kann ein Nutzer feststellen, dass er am richtigen Ort bestellt?</li>
+                        <li>Wie kann ein Betreiber feststellen, dass der Nutzer auch bezahlt hat?</li>
+                    </ul>
+                </div>
+                <div class="text-left bg-light p-4 mt-4 rounded text-dark shadow-lg">
+                    <h1><b>Lösungen</b></h1>
+                    <ul class="pt-1">
+                        <li>Betreiber generiert eine "Session", in die sich der Nutzer durch Scan des QR-Codes einloggen kann</li>
+                        <li>In der Session werden die Bestellungen getätigt</li>
+                        <li>Die Bestellungen erscheinen in Echtzeit auf dem Monitor des Betreibers</li>
+                        <li>Die Bezahlung funktioniert weiterhin nahtlos über das etablierte Payment-System des Restaurants, indem die Bestellungen übertragen werden</li>
+                    </ul>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="text-center center-in-container">
+                <div class="bg-light p-4 rounded text-dark shadow-lg">
+                    <h1 class="mb-5">Projektstruktur</h1>
+                    <img alt="structure" src="assets/project-architecture.png" style="max-width: 100%;">
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container powered-by">
+                <div class="text-center bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Unser Stack</b></h1>
+                    <div class="row mt-4">
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="docker" src="assets/presentation/docker.jpg"></div>
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="nginx" src="assets/presentation/nginx.png"></div>
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="redis" src="assets/presentation/redis.png"></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="react" src="assets/presentation/expo.jpeg"></div>
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="react" src="assets/presentation/react_native.png"></div>
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="django" src="assets/presentation/django.png"></div>
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="postgres" src="assets/presentation/postgres.png"></div>
+                    </div>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="text-center center-in-container">
+                <div class="bg-light p-4 rounded text-dark shadow-lg">
+                    <h1>Continuous Delivery für unsere Dokumentation</h1>
+                    <p class="mb-5">(Oder: warum Travis Bot unser fleißigster Mitarbeiter ist)</p>
+                    <img alt="structure" src="assets/presentation/continuous-delivery.png" style="max-width: 100%;">
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="text-center center-in-container">
+                <div class="bg-light p-4 rounded text-dark shadow-lg">
+                    <h4>Containerisation mit Docker</h4>
+                    <h6 class="mb-1">(Auszug aus unserer docker-compose.yml)</h6>
+                    <script src="https://gist.github.com/PhilippMatthes/d3a523bb827bc7e313a089afa96d6199.js"></script>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="text-center center-in-container">
+                <div class="bg-light p-4 rounded text-dark shadow-lg">
+                    <h1>Cool: Docker als DNS-Service für NGINX</h1>
+                    <p class="mb-5">(Auszug aus unserer NGINX conf)</p>
+                    <script src="https://gist.github.com/PhilippMatthes/73fab0649e877b081d8b9586299e4a5b.js"></script>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+    </div>
+</body>
+
+<script src="assets/presentation/anime.min.js"></script>
+<script src="assets/presentation/three.r92.min.js"></script>
+<script src="assets/presentation/vanta.net.min.js"></script>
+<script>
+    let net = VANTA.NET({
+        el: "#background",
+        color: 0xffffff,
+        backgroundColor: 0x27ae60,
+        points: 15.00,
+        maxDistance: 25,
+        spacing: 20.00,
+        showDots: false
+    });
+
+    let timeline = anime.timeline({
+        easing: 'linear',
+        autoplay: false,
+    });
+
+    let sections = Array.from(document.getElementsByTagName("section"));
+    let firstSection = sections[0];
+    for (let section of sections) {
+        timeline.add({
+            targets: section,
+            opacity: [0, 1],
+            duration: 100,
+        });
+    }
+
+    let container = document.getElementById("presentation-container");
+
+    function computeSlideAnimation() {
+        let percentage = (window.scrollY + firstSection.offsetHeight) / container.offsetHeight;
+        timeline.seek(percentage * timeline.duration);
+    }
+
+    document.addEventListener("scroll", computeSlideAnimation);
+    computeSlideAnimation();
+
+    document.onkeydown = function(e) {
+        e.preventDefault();
+        if (e.code !== "Space" && e.code !== "ArrowUp" && e.code !== "ArrowDown") return;
+        for (let [i, section] of sections.entries()) {
+            if (section.getBoundingClientRect().top >= 0) {
+                let section = e.code === "ArrowUp" ? sections[i - 1] : sections[i + 1];
+                if (section !== undefined) {
+                    section.scrollIntoView({behavior: "smooth"});
+                }
+                return;
+            }
+        }
+    };
+</script>
+
+</html>
