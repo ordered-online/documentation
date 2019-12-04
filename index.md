@@ -2,7 +2,11 @@
 
 The core idea of the ordered.online application is to order online at restaurants, bars, cafés and more.
 
-See our [admuc kickoff presentation](/kickoff-admuc.html), [scc kickoff presentation](/kickoff-scc.html) as well for more visual impressions.
+See our 
+- [admuc kickoff presentation](/kickoff-admuc.html),
+- [scc kickoff presentation](/kickoff-scc.html),
+- [admuc checkpoint presentation](/checkpoint-admuc.html)
+as well for more visual impressions.
 
 ## Use Cases
 ![use case diagram](/assets/use-cases.png)

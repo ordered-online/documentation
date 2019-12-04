@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kickoff slides</title>
+    <link rel="stylesheet" type="text/css" href="assets/presentation/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/presentation/presentation.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+<body class="bg-dark text-white">
+    <div id="background" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: -1;"></div>
+    <div style="position: fixed; bottom: 0; right: 0; z-index: 1337;">
+        <div class="m-3">
+            <img alt="logo" height="60" width="60" src="assets/presentation/icon_transparent_white.png">
+        </div>
+    </div>
+    <div id="presentation-container">
+        <section>
+            <div class="row p-4 text-center center-in-container">
+                <div class="col-sm">
+                    <img class="round shadow-lg profile-icon" alt="Philipp" src="https://avatars3.githubusercontent.com/u/27271818?s=460&v=4">
+                    <div class="mt-5">
+                        <h4><i>Philipp Matthes</i></h4>
+                        <a class="text-light" href="https://philippmatth.es/"><p>https://philippmatth.es/</p></a>
+                        <a class="text-light" href="mailto:philipp.matthes@tu-dresden.de"><p>philipp.matthes@tu-dresden.de</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-4 text-center center-in-container">
+                <div class="col-sm">
+                    <img class="round shadow-lg profile-icon" alt="Philipp" src="https://avatars2.githubusercontent.com/u/23213965?s=460&v=4">
+                    <div class="mt-5">
+                        <h4><i>Felix Kästner</i></h4>
+                        <a class="text-light" target="_blank" href="https://felix-kaestner.com/"><p>https://www.felix-kaestner.com/</p></a>
+                        <a class="text-light" target="_blank" href="mailto:felix.kaestner@mailbox.tu-dresden.de"><p>felix.kaestner@mailbox.tu-dresden.de</p></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container">
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Today's Presentation Outline</b></h1>
+                    <ul>
+                        <li>Recap</li>
+                        <li>Context in our Scenario</li>
+                        <li>Adaption Concepts</li>
+                        <li>Architectural Decisions and Technology Stack</li>
+                    </ul>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section style="background-image: url('assets/presentation/mockup.jpg');
+                        background-size: contain; background-position: center;
+                        background-repeat: repeat-x; background-color: #000;">
+            <div class="center-in-container">
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>ordered.online</b></h1>
+                    <h2>You visit a location and <i>order online</i>.</h2>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container" style="max-height: 50vh; max-width: 80vw;">
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Context in our Scenario</b></h1>
+                    <table class="table table-bordered table-striped table-dark">
+                        <thead>
+                            <tr>
+                                <th>Contextual Dimension</th>
+                                <th>Contextual Aspects</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>Physical Context</td>
+                            <td>Location: at a restaurant, bar or café, can be outside and in varying noise (music, street noise) and lighting conditions.</td>
+                        </tr>
+                        <tr>
+                            <td>Technical Context</td>
+                            <td>Devices: browser (manager) and app (client), potentially low bandwidth. Devices can run multiple operating systems (preferably Android or iOS).</td>
+                        </tr>
+                        <tr>
+                            <td>Personal Context</td>
+                            <td>Location representatives have to give their personal information. Clients should stay anonymous.</td>
+                        </tr>
+                        <tr>
+                            <td>Social Context</td>
+                            <td>Multiple clients should be able to order in the same session, e.g. if they come together.</td>
+                        </tr>
+                        <tr>
+                            <td>Operational Context</td>
+                            <td>There are two roles: the location representative and the customer. Both have different use cases but are interleaved operationally.</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container" style="max-height: 50vh; max-width: 60vw; ">
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Adaption of Application Data - Reduction</b></h1>
+                    <ul class="pt-1">
+                        <li>
+                            We should not transmit all server side data (i.e., locations and products) to the client.
+                            <br>
+                            <code>Adaption Concept: reduce the amount of data with attribute based server side query filtering.</code>
+                        </li>
+                    </ul>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container" style="max-height: 50vh; max-width: 60vw; ">
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Adaption of Application Data - Coding</b></h1>
+                    <ul class="pt-1">
+                        <li>
+                            We want to expose as few information about the backend's functionality as possible.
+                            <br>
+                            <code>Adaption Concept: transform data from a server side internal representation to the compact JSON format.</code>
+                        </li>
+                    </ul>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container" style="max-height: 50vh; max-width: 60vw; ">
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Adaption of Communication - Error handling</b></h1>
+                    <ul class="pt-1">
+                        <li>
+                            Requests can fail, for example, when a login token expires and the user accesses a login restricted endpoint.
+                            <br>
+                            <code>Adaption Concept: use HTTP response codes and reason identifiers and handle failed actions respectively.</code>
+                        </li>
+                    </ul>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container" style="max-height: 50vh; max-width: 60vw; ">
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Adaption of Communication - Message Delivery</b></h1>
+                    <ul class="pt-1">
+                        <li>
+                            During a network outage, certain actions will not be forwarded to the server.
+                            <br>
+                            <code>Adaption Concept: use queuing and forward the actions when possible. Regarding the UX, the user should get an indicator of the network outage, though.</code>
+                        </li>
+                    </ul>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container" style="max-height: 50vh; max-width: 60vw; ">
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Adaption of Data Transmission - Prioritizing of Data</b></h1>
+                    <ul class="pt-1">
+                        <li>
+                            Different services (codes, products, orders, ...) will have different workloads.
+                            <br>
+                            <code>Adaption Concept: prioritize frequently used services. Use a load balancer and dynamically scalable microservices.</code>
+                        </li>
+                    </ul>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="text-center center-in-container">
+                <div class="bg-light p-4 rounded text-dark shadow-lg">
+                    <h1 class="mb-5">Project Structure</h1>
+                    <img alt="structure" src="assets/project-architecture.png" style="max-width: 100%;">
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container powered-by">
+                <div class="text-center bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Technology stack</b></h1>
+                    <div class="row mt-4">
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="docker" src="assets/presentation/docker.jpg"></div>
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="nginx" src="assets/presentation/nginx.png"></div>
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="redis" src="assets/presentation/redis.png"></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="react" src="assets/presentation/expo.jpeg"></div>
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="react" src="assets/presentation/react_native.png"></div>
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="django" src="assets/presentation/django.png"></div>
+                        <div class="col"><img class="shadow-sm p-2 img-thumbnail" alt="postgres" src="assets/presentation/postgres.png"></div>
+                    </div>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+    </div>
+</body>
+
+<script src="assets/presentation/anime.min.js"></script>
+<script src="assets/presentation/three.r92.min.js"></script>
+<script src="assets/presentation/vanta.net.min.js"></script>
+<script>
+    let net = VANTA.NET({
+        el: "#background",
+        color: 0xffffff,
+        backgroundColor: 0x27ae60,
+        points: 15.00,
+        maxDistance: 25,
+        spacing: 20.00,
+        showDots: false
+    });
+
+    let timeline = anime.timeline({
+        easing: 'linear',
+        autoplay: false,
+    });
+
+    let sections = Array.from(document.getElementsByTagName("section"));
+    let firstSection = sections[0];
+    for (let section of sections) {
+        timeline.add({
+            targets: section,
+            opacity: [0, 1],
+            duration: 100,
+        });
+    }
+
+    let container = document.getElementById("presentation-container");
+
+    function computeSlideAnimation() {
+        let percentage = (window.scrollY + firstSection.offsetHeight) / container.offsetHeight;
+        timeline.seek(percentage * timeline.duration);
+    }
+
+    document.addEventListener("scroll", computeSlideAnimation);
+    computeSlideAnimation();
+
+    document.onkeydown = function(e) {
+        e.preventDefault();
+        if (e.code !== "Space" && e.code !== "ArrowUp" && e.code !== "ArrowDown") return;
+        for (let [i, section] of sections.entries()) {
+            if (section.getBoundingClientRect().top >= 0) {
+                let section = e.code === "ArrowUp" ? sections[i - 1] : sections[i + 1];
+                if (section !== undefined) {
+                    section.scrollIntoView({behavior: "smooth"});
+                }
+                return;
+            }
+        }
+    };
+</script>
+
+</html>
