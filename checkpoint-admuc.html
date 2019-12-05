@@ -64,35 +64,63 @@
             </div>
         </section>
         <section>
-            <div class="center-in-container" style="max-height: 50vh; max-width: 80vw;">
+            <div class="center-in-container" style="max-height: 50vh; max-width: 90vw;">
                 <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
-                    <h1><b>Context in our Scenario</b></h1>
+                    <h1><b>Context in our Scenario (1/2)</b></h1>
                     <table class="table table-bordered table-striped table-dark">
                         <thead>
                             <tr>
                                 <th>Contextual Dimension</th>
                                 <th>Contextual Aspects</th>
+                                <th>Implementation</th>
                             </tr>
                         </thead>
                         <tr>
-                            <td>Physical Context</td>
-                            <td>Location: at a restaurant, bar or café, can be outside and in varying noise (music, street noise) and lighting conditions.</td>
-                        </tr>
-                        <tr>
-                            <td>Technical Context</td>
-                            <td>Devices: browser (manager) and app (client), potentially low bandwidth. Devices can run multiple operating systems (preferably Android or iOS).</td>
-                        </tr>
-                        <tr>
                             <td>Personal Context</td>
                             <td>Location representatives have to give their personal information. Clients should stay anonymous.</td>
+                            <td>Implement token based registration/login, implement QR code based client authentication.</td>
                         </tr>
                         <tr>
                             <td>Social Context</td>
                             <td>Multiple clients should be able to order in the same session, e.g. if they come together.</td>
+                            <td>Join clients together in a WebSocket order session.</td>
                         </tr>
                         <tr>
                             <td>Operational Context</td>
                             <td>There are two roles: the location representative and the customer. Both have different use cases but are interleaved operationally.</td>
+                            <td>Implement a separation between client and manager, which interleaves both where necessary, e.g. order placement.</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="think-bubble bg-light rounded mt-2 shadow-lg"></div>
+            </div>
+        </section>
+        <section>
+            <div class="center-in-container" style="max-height: 50vh; max-width: 90vw;">
+                <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
+                    <h1><b>Context in our Scenario (2/2)</b></h1>
+                    <table class="table table-bordered table-striped table-dark">
+                        <thead>
+                            <tr>
+                                <th>Contextual Dimension</th>
+                                <th>Contextual Aspects</th>
+                                <th>Implementation</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>Personal Context</td>
+                            <td>Location representatives have to give their personal information. Clients should stay anonymous.</td>
+                            <td>Implement token based registration/login, implement QR code based client authentication.</td>
+                        </tr>
+                        <tr>
+                            <td>Social Context</td>
+                            <td>Multiple clients should be able to order in the same session, e.g. if they come together.</td>
+                            <td>Join clients together in a WebSocket order session.</td>
+                        </tr>
+                        <tr>
+                            <td>Operational Context</td>
+                            <td>There are two roles: the location representative and the customer. Both have different use cases but are interleaved operationally.</td>
+                            <td>Implement a separation between client and manager, which interleaves both where necessary, e.g. order placement.</td>
                         </tr>
                     </table>
                 </div>
