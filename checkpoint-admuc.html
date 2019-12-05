@@ -136,6 +136,8 @@
                             We should not transmit all server side data (i.e., locations and products) to the client.
                             <br>
                             <code>Adaption Concept: reduce the amount of data with attribute based server side query filtering.</code>
+                            <br>
+                            <code>Adaption Concept: Use lazy loading to reduce number of items send to client apps at once.</code>
                         </li>
                     </ul>
                 </div>
@@ -150,7 +152,7 @@
                         <li>
                             We want to expose as few information about the backend's functionality as possible.
                             <br>
-                            <code>Adaption Concept: transform data from a server side internal representation to the compact JSON format.</code>
+                            <code>Adaption Concept: transform data from a server side internal representation to the compact JSON format. JSON gives use smaller message size than other representations.</code>
                         </li>
                     </ul>
                 </div>
@@ -162,6 +164,11 @@
                 <div class="text-left bg-light p-4 rounded text-dark shadow-lg">
                     <h1><b>Adaption of Communication - Error handling</b></h1>
                     <ul class="pt-1">
+                        <li>
+                            After creating an order, the respective data has to be stored persistently.
+                            <br>
+                            <code>Adaption Concept: Store data persistent in database on server side where we can ensure a stable environment.</code>
+                        </li>
                         <li>
                             Requests can fail, for example, when a login token expires and the user accesses a login restricted endpoint.
                             <br>
