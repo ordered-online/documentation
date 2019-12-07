@@ -77,18 +77,13 @@
                         </thead>
                         <tr>
                             <td>Personal Context</td>
-                            <td>Location representatives have to give their personal information. Clients should stay anonymous.</td>
-                            <td>Implement token based registration/login, implement QR code based client authentication.</td>
+                            <td>Users should only give their personal information, if necessary.</td>
+                            <td>Request login only if the user is a location representative.</td>
                         </tr>
                         <tr>
                             <td>Social Context</td>
                             <td>Multiple clients should be able to order in the same session, e.g. if they come together.</td>
                             <td>Join clients together in a WebSocket order session.</td>
-                        </tr>
-                        <tr>
-                            <td>Operational Context</td>
-                            <td>There are two roles: the location representative and the customer. Both have different use cases but are interleaved operationally.</td>
-                            <td>Implement a separation between client and manager, which interleaves both where necessary, e.g. order placement.</td>
                         </tr>
                     </table>
                 </div>
@@ -108,14 +103,14 @@
                             </tr>
                         </thead>
                         <tr>
-                            <td>Physical Context</td>
-                            <td>Location: at a restaurant, bar or café, can be outside and in varying noise (music, street noise) conditions.</td>
-                            <td>Use haptic feedback instead of audio sounds for noticiations.</td>
+                            <td>Operational Context</td>
+                            <td>There are two roles: the location representative and the customer. Both have different use cases but are interleaved operationally.</td>
+                            <td>Implement a separation between client and manager, which interleaves both where necessary, for example order placement.</td>
                         </tr>
                         <tr>
                             <td>Technical Context</td>
                             <td>Devices: browser (manager) and app (client), potentially low bandwidth. Devices can run multiple operating systems (preferably Android or iOS).</td>
-                            <td>Adapt application data and notify the user when a network outage occurs.</td>
+                            <td>Sense available network bandwidth and adapt application data accordingly. Notify the user when a network outage occurs.</td>
                         </tr>
                     </table>
                 </div>
