@@ -37,6 +37,10 @@ We present an architecture, which is devided into two parts:
 1. The microservice based backend API layer
 2. The web/native frontend application layer
 
+### API specification
+
+We provide an [OpenAPI 3 specification for all of our API endpoints](specification.html).
+
 ### Microservice Based Backend API Layer
 
 #### Architecture

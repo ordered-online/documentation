@@ -1,0 +1,1004 @@
+openapi: 3.0.0
+
+info:
+  description: This is the Open API 3.0.0 specification of ordered.online's endpoints.
+  version: '0.0.4'
+  title: ordered.online API
+  contact:
+    email: contact@ordered.online
+
+servers:
+  - url: http://ordered.online
+
+tags:
+  - name: locations
+    description: Locations endpoint
+    externalDocs:
+      url: https://github.com/ordered-online/locations
+  - name: codes
+    description: Codes endpoint
+    externalDocs:
+      url: https://github.com/ordered-online/codes
+  - name: orders
+    description: Orders endpoint
+    externalDocs:
+      url: https://github.com/ordered-online/orders
+  - name: verification
+    description: Verification endpoint
+    externalDocs:
+      url: https://github.com/ordered-online/verification
+  - name: products
+    description: Products endpoint
+    externalDocs:
+      url: https://github.com/ordered-online/products
+
+paths:
+  /verification/register/:
+    post:
+      tags:
+        - verification
+      summary: Register a new user with credentials.
+      requestBody:
+        description: Credentials and personal information about the user
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: The generated auth token and user id.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '400':
+          description: if the user already exists or the request JSON was not formatted correctly.
+        '405':
+          description: if the service was accessed with any other method than specified.
+        '403':
+          description: if the credentials are incorrect.
+
+  /verification/verify/:
+    post:
+      tags:
+        - verification
+      summary: Verify a user with a session key.
+      requestBody:
+        description: The credentials to verify the user (session code and user id).
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Authentication'
+      responses:
+        '200':
+          description: The generated auth token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '400':
+          description: if the passed JSON was malformed.
+        '403':
+          description: if the session key or the user id was incorrect.
+        '405':
+          description: if the access method was incorrect.
+
+  /verification/login/:
+    post:
+      tags:
+        - verification
+      summary: Login a user with his credentials.
+      requestBody:
+        description: The credentials to login the user (username and password).
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Credentials'
+      responses:
+        '200':
+          description: The generated auth token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '400':
+          description: if the passed JSON was malformed.
+        '403':
+          description: if the passed credentials were incorrect.
+        '405':
+          description: if the access method was incorrect.
+
+  /verification/logout/:
+    post:
+      tags:
+        - verification
+      summary: Invalidate the session under the given session key and logout.
+      requestBody:
+        description: The credentials to verify the user (session code and user id).
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Authentication'
+      responses:
+        '200':
+          description: The logout response.
+        '400':
+          description: if the passed JSON was malformed.
+        '403':
+          description: if the passed session key or user id was incorrect.
+        '405':
+          description: if the access method was incorrect.
+
+  /locations/create/:
+    post:
+      tags:
+        - locations
+      summary: Create a location.
+      requestBody:
+        description: The credentials from the user and the location object to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationRequest'
+      responses:
+        '200':
+          description: The created location.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationResponse'
+        '400':
+          description: if the passed JSON was malformed or the location already exists.
+        '403':
+          description: if the passed credentials were incorrect.
+        '405':
+          description: if the access method was incorrect.
+
+  /locations/edit/{location_id}/:
+    post:
+      tags:
+        - locations
+      summary: Edit a location.
+      parameters:
+        - name: location_id
+          in: path
+          description: The location id to be edited.
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: The credentials from the user and the edited location object.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationRequest'
+      responses:
+        '200':
+          description: The edited location.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationResponse'
+        '400':
+          description: if the passed JSON was malformed.
+        '403':
+          description: if the credentials were incorrect.
+        '405':
+          description: if the access method was incorrect.
+        '503':
+          description: if the verifications service is unavailable.
+
+  /locations/get/{location_id}/:
+    get:
+      tags:
+        - locations
+      summary: Gets the requested location.
+      parameters:
+        - name: location_id
+          in: path
+          description: The location id.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The requested location.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationResponse'
+        '404':
+          description: if the location was not found.
+        '405':
+          description: if the access method was incorrect.
+
+  /locations/find/:
+    get:
+      tags:
+        - locations
+      summary: Find a location by certain attributes. Results are limited to 100 locations.
+      parameters:
+        - name: user_id
+          in: query
+          description: Search for locations by a specific user id.
+          required: false
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Search for locations, whose names contain the given query (case insensitive).
+          required: false
+          schema:
+            type: string
+        - name: category
+          in: query
+          description: Search for locations with a given category.
+          required: false
+          schema:
+            type: string
+        - name: tag
+          in: query
+          description: Search for locations with a given tag.
+          required: false
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: A list of locations matching the given query parameters.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LocationResponse'
+        '405':
+          description: if the access method was incorrect.
+
+  /locations/nearby/:
+    get:
+      tags:
+        - locations
+      summary: Finds a location nearby.
+      parameters:
+        - name: longitude
+          in: query
+          description: The longitude of the position to be searched, float-parseable.
+          required: true
+          schema:
+            type: string
+        - name: latitude
+          in: query
+          description: The latitude of the position to be searched, float-parseable.
+          required: true
+          schema:
+            type: string
+        - name: radius
+          in: query
+          description: The radius in meters for results to be fetched.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: A list of locations matching the location around its search radius.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    distance:
+                      type: number
+                      format: double
+                      description: The distance of the location to a given position.
+                    location:
+                      $ref: '#/components/schemas/LocationResponse'
+        '400':
+          description: if the given string values could not be parsed to floats.
+        '405':
+          description: if if the access method was incorrect.
+
+  /codes/new/:
+    get:
+      tags:
+        - codes
+      summary: Create a new unique code.
+      responses:
+        '200':
+          description: The code.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Code'
+        '405':
+          description: if the access method was incorrect.
+
+  /codes/render/qr/:
+    post:
+      tags:
+        - codes
+      summary: Render a payload value to a base64 encoded qr code.
+      requestBody:
+        description: The payload value to be rendered.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  description: The value to be encoded.
+      responses:
+        '200':
+          description: The base64 encoded qr code image.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QRCode'
+        '400':
+          description: if the passed JSON was malformed.
+        '403':
+          description: if the passed value could not be rendered to a qr code.
+        '405':
+          description: if the access method was incorrect.
+
+  /orders/sessions/create/:
+    post:
+      tags:
+        - orders
+      summary: Create an order session.
+      requestBody:
+        description: The information about the order session and credentials of the location owner.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: The user id for verification.
+                session_key:
+                  type: string
+                  description: The session key of the user for verification.
+                location_id:
+                  type: integer
+                  description: The location's id for which to create the session.
+                name:
+                  type: string
+                  description: A unique name for the session, for example "Table 1" or "Customer Alice"
+      responses:
+        '200':
+          description: The order session.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderSession'
+        '400':
+          description: if the given JSON was malformed or the session is duplicated.
+        '403':
+          description: if the given credentials were not correct.
+        '405':
+          description: if the service was accessed with another access method than specified.
+        '503':
+          description: if the verification service, the locations service, or the codes service were unavailable.
+
+  /orders/sessions/close/{session_code}/:
+    post:
+      tags:
+        - orders
+      summary: Close a session.
+      parameters:
+        - name: session_code
+          in: path
+          description: The session code for the session to be closed.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The session with its state set to CLOSED.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderSession'
+        '404':
+          description: if the session could not be found.
+        '405':
+          description: if the service was accessed with another access method than specified.
+
+  /orders/sessions/get/{session_code}/:
+    get:
+      tags:
+        - orders
+      summary: Gets a session, with all of its orders.
+      parameters:
+        - name: session_code
+          in: path
+          description: The session code for the session to be closed.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The session with its state set to CLOSED.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderSession'
+        '404':
+          description: if the session could not be found.
+        '405':
+          description: if the service was accessed with another access method than specified.
+
+  /orders/sessions/find/:
+    get:
+      tags:
+        - orders
+      summary: Find a session by location and/or state.
+      parameters:
+        - name: location_id
+          in: query
+          description: Search for sessions by a specific location id.
+          required: false
+          schema:
+            type: integer
+        - name: state
+          in: query
+          description: Search for sessions by a specific state (case-insensitive).
+          required: false
+          schema:
+            type: string
+            enum:
+              - OPEN
+              - CLOSED
+      responses:
+        '200':
+          description: The session with its state set to CLOSED.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderSession'
+        '405':
+          description: if the service was accessed with another access method than specified.
+
+  /orders/products/add/:
+    post:
+      tags:
+        - orders
+      summary: Create an order for a given session.
+      requestBody:
+        description: The information about the order session and credentials of the location owner.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: integer
+                  description: The product id to be added to the order session.
+                session_code:
+                  type: string
+                  description: The session code for the session on which to add the product to.
+      responses:
+        '200':
+          description: The session with all current orders.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderSession'
+        '403':
+          description: if the passed json was malformed.
+        '404':
+          description: if the associated session could not be found.
+        '405':
+          description: if the service was accessed with any other method than specified.
+
+  /products/create/:
+    post:
+      tags:
+        - products
+      summary: Create a product.
+      requestBody:
+        description: The credentials from the user and the product to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductRequest'
+      responses:
+        '200':
+          description: The created product (with an id attribute).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        '405':
+          description: if the service was accessed with any other method than specified.
+        '403':
+          description: if the credentials were incorrect or the given JSON was malformed.
+        '400':
+          description: if the given product is a duplicate according to our constraints.
+        '503':
+          description: if the verification service or the locations service were unavailable.
+
+  /products/edit/{product_id}/:
+    post:
+      tags:
+        - products
+      summary: Edit a product.
+      parameters:
+        - name: product_id
+          in: path
+          description: The id for the product to be edited.
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: The credentials from the user and the edited product object.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductRequest'
+      responses:
+        '200':
+          description: The changed product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        '403':
+          description: if the credentials were incorrect or the given JSON was malformed.
+        '404':
+          description: if the product could not be found.
+        '405':
+          description: if the service was accessed with an unspecified access method.
+        '503':
+          description: if the verification service or the locations service was unavailable.
+
+  /products/get/{product_id}/:
+    get:
+      tags:
+        - products
+      summary: Get a product by its id.
+      parameters:
+        - name: product_id
+          in: path
+          description: The product id.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        '404':
+          description: if the product was not found.
+        '405':
+          description: if the service was accessed by an unspecified access method.
+
+  /products/find/:
+    get:
+      tags:
+        - products
+      summary: Find a product. Results are limited to 1000 products.
+      parameters:
+        - name: location_id
+          in: query
+          description: Search for products by a specific location id.
+          required: false
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Search for products, whose names contain the given query (case insensitive).
+          required: false
+          schema:
+            type: string
+        - name: category
+          in: query
+          description: Search for products by a given category.
+          required: false
+          schema:
+            type: string
+        - name: tag
+          in: query
+          description: Search for products by a given tag.
+          required: false
+          schema:
+            type: string
+        - name: additive
+          in: query
+          description: Search for products with a given additive.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of products, possibly empty.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductResponse'
+        '405':
+          description: if the service was accessed by an unspecified access method.
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+          description: The chosen user name.
+        password:
+          type: string
+          description: The chosen password.
+        email:
+          type: string
+          description: The chosen email.
+        first_name:
+          type: string
+          description: The user's first name.
+        last_name:
+          type: string
+          description: The chosen user's last name.
+      # All properties are required
+      required:
+        - username
+        - password
+        - email
+        - first_name
+        - last_name
+
+    Credentials:
+      type: object
+      properties:
+        username:
+          type: string
+          description: The chosen user name.
+        password:
+          type: string
+          description: The chosen password.
+      required:
+        - username
+        - password
+
+    Session:
+      type: object
+      properties:
+        session_key:
+          type: string
+          description: Unique key coupled to a user to reference a login.
+        session_data:
+          type: object
+          description: Session data containing the user id.
+          properties:
+            user_id:
+              type: integer
+              description: Unique id of a user.
+          required:
+            - user_id
+      required:
+        - session_key
+        - session_data
+
+    Authentication:
+      type: object
+      properties:
+        session_key:
+          type: string
+          description: Unique key coupled to a user to reference a login.
+        user_id:
+          type: integer
+          description: Unique id of a user.
+      required:
+        - session_key
+        - user_id
+
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The chosen name of the location.
+        description:
+          type: string
+          description: The chosen description of the location.
+        address:
+          type: string
+          description: The complete address of the location including street, number, postal code and city.
+        latitude:
+          type: number
+          format: float
+          description: Latitude of the locations position.
+        longitude:
+          type: number
+          format: float
+          description: Longitude of the locations position.
+        website:
+          type: string
+          description: The chosen website of the location.
+        telephone:
+          type: string
+          description: The chosen telephone number of the location.
+        categories:
+          type: array
+          description: An array of associated categories.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the category.
+        tags:
+          type: array
+          description: An array of associated tags.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the tag.
+      required:
+        - name
+        - description
+        - address
+
+    LocationRequest:
+      type: object
+      properties:
+        session_key:
+          type: string
+          description: Unique key coupled to a user to reference a login.
+        user_id:
+          type: integer
+          description: Unique id of a user.
+        location:
+          $ref: '#/components/schemas/Location'
+      required:
+        - session_key
+        - user_id
+        - location
+
+    LocationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique id of the location.
+        name:
+          type: string
+          description: The chosen name of the location.
+        description:
+          type: string
+          description: The chosen description of the location.
+        address:
+          type: string
+          description: The complete address of the location including street, number, postal code and city.
+        user_id:
+          type: integer
+          description: The id of the location owner's user.
+        latitude:
+          type: number
+          format: float
+          description: Latitude of the locations position.
+        longitude:
+          type: number
+          format: float
+          description: Longitude of the locations position.
+        website:
+          type: string
+          description: The chosen website of the location.
+        telephone:
+          type: string
+          description: The chosen telephone number of the location.
+        categories:
+          type: array
+          description: An array of associated categories.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the category.
+        tags:
+          type: array
+          description: An array of associated tags.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the tag.
+      required:
+        - name
+        - description
+        - address
+
+    Product:
+      type: object
+      properties:
+        location_id:
+          type: integer
+          description: The location's id where this product is selled.
+        name:
+          type: string
+          description: The chosen name of the product.
+        description:
+          type: string
+          description: The chosen description of the product.
+        price:
+          type: number
+          format: float
+          description: The chosen price of the product.
+        categories:
+          type: array
+          description: An array of associated categories.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the category.
+        tags:
+          type: array
+          description: An array of associated tags.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the tag.
+        additives:
+          type: array
+          description: An array of associated additives.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the additive.
+      required:
+        - location_id
+        - name
+        - description
+        - price
+
+    ProductRequest:
+      type: object
+      properties:
+        session_key:
+          type: string
+          description: Unique key coupled to a user to reference a login.
+        user_id:
+          type: integer
+          description: Unique id of a user.
+        product:
+          $ref: '#/components/schemas/Product'
+      required:
+        - session_key
+        - user_id
+        - product
+
+    ProductResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique id of the product.
+        location_id:
+          type: integer
+          description: The location's id where this product is selled.
+        name:
+          type: string
+          description: The chosen name of the product.
+        description:
+          type: string
+          description: The chosen description of the product.
+        price:
+          type: number
+          format: float
+          description: The chosen price of the product.
+        categories:
+          type: array
+          description: An array of associated categories.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the category.
+        tags:
+          type: array
+          description: An array of associated tags.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the tag.
+        additives:
+          type: array
+          description: An array of associated additives.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the additive.
+
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: A unique id of an item ordered within the session.
+        product_id:
+          type: integer
+          description: The product's id of which was ordered.
+        session:
+          type: string
+          description: The session's code on which the order was placed.
+        timestamp:
+          type: string
+          description: Unix timestamp of the moment the item was ordered.
+
+    OrderSession:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The session code to identify the order session.
+        name:
+          type: string
+          description: A unique name for the session, for example "Table 1" or "Customer Alice"
+        location_id:
+          type: integer
+          description: The location's id for the session.
+        state:
+          type: string
+          enum:
+            - OPEN
+            - CLOSED
+        timestamp:
+          type: string
+          description: Unix timestamp of the moment the session was created.
+        orders:
+          type: array
+          description: The list of orders placed in a given session.
+          items:
+            $ref: '#/components/schemas/Order'
+
+    Code:
+      type: object
+      properties:
+        value:
+          type: string
+          description: The value of the code.
+
+    QRCode:
+      type: object
+      properties:
+        base64:
+          type: string
+          description: The value of the code encoded to a base64 string.
